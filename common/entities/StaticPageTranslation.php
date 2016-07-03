@@ -63,6 +63,8 @@ class StaticPageTranslation extends ActiveRecord
             [['title'], 'string', 'max' => 255],
             [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
             [['page_key'], 'exist', 'skipOnError' => true, 'targetClass' => StaticPage::className(), 'targetAttribute' => ['page_key' => 'key']],
+            // seo data
+            [['seoUrl', 'seoTitle', 'seoDescription', 'seoKeywords'], 'string']
         ];
     }
 

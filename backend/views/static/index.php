@@ -42,7 +42,7 @@ $this->title = 'Static pages';
                                         <?php $translations = ArrayHelper::index($page->translation, 'language_id') ?>
                                         <?php foreach ($languages as $language): ?>
                                             <a href="<?= Url::to([
-                                                'save-translation',
+                                                'save-page',
                                                 'page_key' => $page->key,
                                                 'languageId' => $language->id
                                             ]) ?>"
@@ -55,7 +55,7 @@ $this->title = 'Static pages';
                                 <td>
                                     <a href="<?= Url::to([
                                         'save-page',
-                                        'key' => $page->key
+                                        'page_key' => $page->key
                                     ])?>" class="glyphicon glyphicon-edit text-warning btn btn-default btn-sm">
                                     </a>
                                 </td>

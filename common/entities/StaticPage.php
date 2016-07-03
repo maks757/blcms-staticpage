@@ -3,6 +3,7 @@
 namespace bl\cms\seo\common\entities;
 
 use bl\cms\seo\common\entities\StaticPageTranslation;
+use bl\multilang\behaviors\TranslationBehavior;
 use Yii;
 use yii\db\ActiveRecord;
 
@@ -18,6 +19,18 @@ class StaticPage extends ActiveRecord
     /**
      * @inheritdoc
      */
+
+    public function behaviors()
+    {
+        return [
+            'translation' => [
+                'class' => TranslationBehavior::className(),
+                'translationClass' => StaticPageTranslation::className(),
+                'relationColumn' => 'page_key'
+            ]
+        ];
+    }
+    
     public static function tableName()
     {
         return 'static_page';
@@ -30,6 +43,8 @@ class StaticPage extends ActiveRecord
     {
         return [
             [['key'], 'required'],
+            [['key'], 'unique',
+                'message' => 'Such key already exists.'],
             [['key'], 'string', 'max' => 50],
         ];
     }
