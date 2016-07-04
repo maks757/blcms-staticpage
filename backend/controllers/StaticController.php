@@ -74,7 +74,7 @@ class StaticController extends Controller
                     }
                     $static_page_translation->language_id = $selected_language->id;
                     $static_page_translation->save();
-                    return $this->redirect('/admin/seo/static');
+//                    return $this->redirect('/admin/seo/static');
                 }
             }
 
