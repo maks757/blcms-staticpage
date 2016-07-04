@@ -39,7 +39,7 @@ $this->title = 'Static pages';
                                 </td>
                                 <td>
                                     <?php if(count($languages) > 1): ?>
-                                        <?php $translations = ArrayHelper::index($page->translation, 'language_id') ?>
+                                        <?php $translations = ArrayHelper::index($page->translations, 'language_id') ?>
                                         <?php foreach ($languages as $language): ?>
                                             <a href="<?= Url::to([
                                                 'save-page',

@@ -22,7 +22,7 @@ class StaticController extends Controller
      */
     public function actionIndex()
     {
-        $pages = StaticPage::find()->with('translation')->all();
+        $pages = StaticPage::find()->with('translations')->all();
         return $this->render('index', [
             'pages' => $pages,
             'languages' => Language::findAll(['active' => true])
