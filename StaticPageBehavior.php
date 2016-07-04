@@ -21,7 +21,9 @@ class StaticPageBehavior extends Behavior
             if (!empty($staticPage)) {
                 $staticPageTranslation = $staticPage->translation;
                 if (!empty($staticPageTranslation)) {
-                    $this->owner->view->title = $staticPageTranslation->seoTitle;
+                    if (!empty($staticPageTranslation->seoTitle)) {
+                        $this->owner->view->title = $staticPageTranslation->seoTitle;
+                    }
                     if (!empty($staticPageTranslation->seoDescription)) {
                         $this->owner->view->registerMetaTag([
                             'name' => 'description',
