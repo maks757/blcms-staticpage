@@ -12,7 +12,8 @@ use yii\db\ActiveRecord;
  *
  * @property string $key
  *
- * @property StaticPageTranslation[] $staticPageTranslations
+ * @property StaticPageTranslation[] $translations
+ * @property StaticPageTranslation $translation
  */
 class StaticPage extends ActiveRecord
 {
@@ -62,7 +63,7 @@ class StaticPage extends ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTranslation()
+    public function getTranslations()
     {
         return $this->hasMany(StaticPageTranslation::className(), ['page_key' => 'key']);
     }
