@@ -51,11 +51,11 @@ $this->title = 'Save static page translation';
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>
-                <?if (!empty($static_page_translation->page_key)): ?>
+                <?php if (!empty($static_page_translation->page_key)): ?>
                     <h1>Static Page: <?=$static_page_translation->page_key; ?></h1>
-                <?else: ?>
+                <?php else: ?>
                     <?= '<h1>Addition a new page</h1>'; ?>
-                <? endif; ?>
+                <?php endif; ?>
                 <?= $form->field($static_page_translation, 'page_key', [
                     'inputOptions' => [
                         'class' => 'form-control'
