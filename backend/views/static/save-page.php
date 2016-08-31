@@ -124,7 +124,7 @@ $this->title = 'Save static page translation';
                     'inputOptions' => [
                         'class' => 'form-control'
                     ]
-                ])->checkbox()->label('Auto generate keywords')
+                ])->checkbox([], false)->label('Auto generate keywords')
                 ?>
 
                 <?= $form->field($static_page_translation, 'seoKeywords', [
