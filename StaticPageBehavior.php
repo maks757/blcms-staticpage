@@ -46,7 +46,7 @@ class StaticPageBehavior extends Behavior
                     $keywords = implode(', ', $array);
                     $this->owner->view->registerMetaTag([
                         'name' => 'keywords',
-                        'content' => html_entity_decode(strtr(($staticPageTranslation->generate_keyword ? $staticPageTranslation->seoKeywords : $keywords), $this->variables))
+                        'content' => html_entity_decode(strtr(($staticPageTranslation->generate_keyword ? $keywords : $staticPageTranslation->seoKeywords), $this->variables))
                     ]);
                 }
             }
