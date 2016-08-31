@@ -2,6 +2,7 @@
 namespace bl\cms\seo;
 
 use bl\cms\seo\common\entities\StaticPage;
+use bl\cms\seo\common\entities\StaticPageTranslation;
 use yii\base\Behavior;
 use yii\web\Controller;
 
@@ -20,6 +21,9 @@ class StaticPageBehavior extends Behavior
         if (!empty($this->key)) {
             $staticPage = StaticPage::findOne(['key' => $this->key]);
             if (!empty($staticPage)) {
+                /**
+                 *@var StaticPageTranslation $staticPageTranslation
+                 */
                 $staticPageTranslation = $staticPage->translation;
                 if (!empty($staticPageTranslation)) {
                     if (!empty($staticPageTranslation->seoTitle)) {
@@ -31,12 +35,19 @@ class StaticPageBehavior extends Behavior
                             'content' => html_entity_decode(strtr($staticPageTranslation->seoDescription, $this->variables))
                         ]);
                     }
-                    if (!empty($staticPageTranslation->seoKeywords)) {
-                        $this->owner->view->registerMetaTag([
-                            'name' => 'keywords',
-                            'content' => html_entity_decode(strtr($staticPageTranslation->seoKeywords, $this->variables))
-                        ]);
+                    if (!empty($staticPageTranslation->seoKeywords))
+                        $parse_text = str_replace(['.', ','], ' ', $staticPageTranslation->seoTitle);
+                    $array = explode(' ', $parse_text);
+                    foreach ($array as $key => $str) {
+                        if(strlen(utf8_decode($str)) < 4) {
+                            unset($array[$key]);
+                        }
                     }
+                    $keywords = implode(', ', $array);
+                    $this->owner->view->registerMetaTag([
+                        'name' => 'keywords',
+                        'content' => html_entity_decode(strtr(($staticPageTranslation->generate_keyword ? $staticPageTranslation->seoKeywords : $keywords), $this->variables))
+                    ]);
                 }
             }
         }

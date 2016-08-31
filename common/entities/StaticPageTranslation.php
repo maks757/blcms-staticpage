@@ -19,6 +19,7 @@ use yii\db\Expression;
  * @property string $text
  * @property string $created_at
  * @property string $updated_at
+ * @property string $generate_keyword
  *
  * @property Language $language
  * @property StaticPage $pageKey
@@ -57,6 +58,7 @@ class StaticPageTranslation extends ActiveRecord
     {
         return [
             [['language_id'], 'integer'],
+            [['generate_keyword'], 'boolean'],
             [['text'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['page_key'], 'string', 'max' => 50],

@@ -5,6 +5,7 @@
  * @var $languages Language[]
  * @var $selectedLanguage Language
  * @var StaticPageTranslation $page
+ * @var ActiveForm $form
  */
 
 use bl\cms\seo\common\entities\StaticPageTranslation;
@@ -117,6 +118,13 @@ $this->title = 'Save static page translation';
                         'class' => 'form-control'
                     ]
                 ])->textarea(['rows' => 3])->label('Seo Description')
+                ?>
+
+                <?= $form->field($static_page_translation, 'generate_keyword', [
+                    'inputOptions' => [
+                        'class' => 'form-control'
+                    ]
+                ])->checkbox()->label('Auto generate keywords')
                 ?>
 
                 <?= $form->field($static_page_translation, 'seoKeywords', [
