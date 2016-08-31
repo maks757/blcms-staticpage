@@ -35,19 +35,22 @@ class StaticPageBehavior extends Behavior
                             'content' => html_entity_decode(strtr($staticPageTranslation->seoDescription, $this->variables))
                         ]);
                     }
-                    if (!empty($staticPageTranslation->seoKeywords))
+                    if ($staticPageTranslation->generate_keyword) {
                         $parse_text = str_replace(['.', ','], ' ', $staticPageTranslation->seoTitle);
-                    $array = array_unique(explode(' ', $parse_text));
-                    foreach ($array as $key => $str) {
-                        if(strlen(utf8_decode($str)) < 4) {
-                            unset($array[$key]);
+                        $array = array_unique(explode(' ', $parse_text));
+                        foreach ($array as $key => $str) {
+                            if (strlen(utf8_decode($str)) < 4) {
+                                unset($array[$key]);
+                            }
                         }
+                        $keywords = implode(', ', $array);
                     }
-                    $keywords = implode(', ', $array);
-                    $this->owner->view->registerMetaTag([
-                        'name' => 'keywords',
-                        'content' => html_entity_decode(strtr(($staticPageTranslation->generate_keyword ? $keywords : $staticPageTranslation->seoKeywords), $this->variables))
-                    ]);
+                    if (!empty($staticPageTranslation->seoKeywords) || $staticPageTranslation->generate_keyword) {
+                        $this->owner->view->registerMetaTag([
+                            'name' => 'keywords',
+                            'content' => html_entity_decode(strtr(($staticPageTranslation->generate_keyword ? $keywords : $staticPageTranslation->seoKeywords), $this->variables))
+                        ]);
+                    }
                 }
             }
         }
