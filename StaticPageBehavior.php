@@ -37,7 +37,7 @@ class StaticPageBehavior extends Behavior
                     }
                     if (!empty($staticPageTranslation->seoKeywords))
                         $parse_text = str_replace(['.', ','], ' ', $staticPageTranslation->seoTitle);
-                    $array = explode(' ', $parse_text);
+                    $array = array_unique(explode(' ', $parse_text));
                     foreach ($array as $key => $str) {
                         if(strlen(utf8_decode($str)) < 4) {
                             unset($array[$key]);
