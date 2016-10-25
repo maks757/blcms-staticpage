@@ -4,9 +4,8 @@ namespace bl\cms\seo\backend\controllers;
 use bl\cms\seo\common\entities\StaticPageTranslation;
 use bl\cms\seo\common\entities\StaticPage;
 use bl\multilang\entities\Language;
-use bl\seo\entities\SeoData;
 use Yii;
-use yii\base\ErrorException;
+use yii\filters\AccessControl;
 use yii\helpers\Url;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -16,6 +15,35 @@ use yii\web\Controller;
  */
 class StaticController extends Controller
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index'],
+                        'roles' => ['viewStaticPages'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['save-page'],
+                        'roles' => ['editStaticPage'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['remove'],
+                        'roles' => ['deleteStaticPage'],
+                        'allow' => true,
+                    ],
+                ],
+            ]
+        ];
+    }
+
     /**
      * Renders the index view for the module
      * @return string
@@ -29,6 +57,10 @@ class StaticController extends Controller
         ]);
     }
 
+    /**
+     * @param string $key
+     * @return \yii\web\Response
+     */
     public function actionRemove($key)
     {
         StaticPageTranslation::deleteAll(['page_key' => $key]);
@@ -36,6 +68,13 @@ class StaticController extends Controller
         return $this->redirect(Url::to(['/seo/static/']));
     }
 
+    /**
+     * @param string $page_key
+     * @param integer $languageId
+     * @return mixed
+     * @throws BadRequestHttpException
+     * @throws BadRequestHttpException
+     */
     public function actionSavePage($page_key = null, $languageId = null)
     {
         $selected_language = (!empty($languageId)) ? Language::findOne($languageId) : Language::findOne(['lang_id' => Yii::$app->language]);
@@ -74,7 +113,6 @@ class StaticController extends Controller
                     }
                     $static_page_translation->language_id = $selected_language->id;
                     $static_page_translation->save();
-//                    return $this->redirect('/admin/seo/static');
                 }
             }
 
