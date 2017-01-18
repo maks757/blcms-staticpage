@@ -37,8 +37,8 @@ $this->title = 'Static pages';
                                 <td>
                                     <?= $page->key; ?>
                                 </td>
-                                <td>
-                                    <?php if(count($languages) > 1): ?>
+                                <?php if(count($languages) > 1): ?>
+                                    <td>
                                         <?php $translations = ArrayHelper::index($page->translations, 'language_id') ?>
                                         <?php foreach ($languages as $language): ?>
                                             <a href="<?= Url::to([
@@ -50,8 +50,8 @@ $this->title = 'Static pages';
                                                class="btn btn-<?= !empty($translations[$language->id]) ? 'primary' : 'danger'
                                                ?> btn-xs"><?= $language->name ?></a>
                                         <?php endforeach; ?>
-                                    <?php endif; ?>
-                                </td>
+                                    </td>
+                                <?php endif; ?>
                                 <td>
                                     <a href="<?= Url::to([
                                         'save-page',
