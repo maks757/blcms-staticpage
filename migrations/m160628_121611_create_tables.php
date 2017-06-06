@@ -26,8 +26,6 @@ class m160628_121611_create_tables extends Migration
             'created_at' => $this->dateTime(),
             'updated_at' => $this->dateTime()
         ]);
-        $this->addForeignKey('static_page_translation:page_key', 'static_page_translation', 'page_key', 'static_page', 'key');
-        $this->addForeignKey('static_page_translation:language_id', 'static_page_translation', 'language_id', 'language', 'id');
     }
 
     /**
@@ -35,8 +33,6 @@ class m160628_121611_create_tables extends Migration
      */
     public function down()
     {
-        $this->dropForeignKey('static_page_translation:language_id', 'static_page_translation');
-        $this->dropForeignKey('static_page_translation:page_key', 'static_page_translation');
         $this->dropTable('static_page_translation');
         $this->dropTable('static_page');
     }

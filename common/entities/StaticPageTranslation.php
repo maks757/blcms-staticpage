@@ -2,8 +2,8 @@
 
 namespace maks757\seo_static_page\common\entities;
 
-use bl\multilang\entities\Language;
-use bl\seo\behaviors\SeoDataBehavior;
+use maks757\seo\behaviors\SeoDataBehavior;
+use maks757\seo_static_page\common\entities\language\Language;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -63,8 +63,6 @@ class StaticPageTranslation extends ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['page_key'], 'string', 'max' => 50],
             [['title'], 'string', 'max' => 255],
-            [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Language::className(), 'targetAttribute' => ['language_id' => 'id']],
-            [['page_key'], 'exist', 'skipOnError' => true, 'targetClass' => StaticPage::className(), 'targetAttribute' => ['page_key' => 'key']],
             // seo data
             [['seoUrl', 'seoTitle', 'seoDescription', 'seoKeywords'], 'string']
         ];

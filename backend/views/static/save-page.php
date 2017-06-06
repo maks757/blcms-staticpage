@@ -8,8 +8,8 @@
  * @var ActiveForm $form
  */
 
+use maks757\seo_static_page\common\entities\language\Language;
 use maks757\seo_static_page\common\entities\StaticPageTranslation;
-use bl\multilang\entities\Language;
 use dosamigos\tinymce\TinyMce;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
@@ -62,30 +62,6 @@ $this->title = 'Save static page translation';
                         'class' => 'form-control'
                     ]])
                 ?>
-                <?= $form->field($static_page_translation, 'title', [
-                    'inputOptions' => [
-                        'class' => 'form-control'
-                    ]])
-                ?>
-                <?= $form->field($static_page_translation, 'text', [
-                    'inputOptions' => [
-                        'class' => 'form-control'
-                    ]
-                ])->widget(TinyMce::className(), [
-                    'options' => ['rows' => 20],
-                    'language' => 'ru',
-                    'clientOptions' => [
-                        'relative_urls' => false,
-                        'plugins' => [
-                            'textcolor colorpicker',
-                            "advlist autolink lists link charmap print preview anchor",
-                            "searchreplace visualblocks code fullscreen",
-                            "insertdatetime media table contextmenu paste",
-                            'image'
-                        ],
-                        'toolbar' => "undo redo | forecolor backcolor | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-                    ]])
-                ?>
             </div>
         </div>
     </div>
@@ -99,12 +75,12 @@ $this->title = 'Save static page translation';
                 <?= 'Seo Data' ?>
             </div>
             <div class="panel-body">
-                <?= $form->field($static_page_translation, 'seoUrl', [
-                    'inputOptions' => [
-                        'class' => 'form-control'
-                    ]
-                ])->label('Seo Url')
-                ?>
+<!--                --><?//= $form->field($static_page_translation, 'seoUrl', [
+//                    'inputOptions' => [
+//                        'class' => 'form-control'
+//                    ]
+//                ])->label('Seo Url')
+//                ?>
 
                 <?= $form->field($static_page_translation, 'seoTitle', [
                     'inputOptions' => [
@@ -120,13 +96,6 @@ $this->title = 'Save static page translation';
                 ])->textarea(['rows' => 3])->label('Seo Description')
                 ?>
 
-                <?= $form->field($static_page_translation, 'generate_keyword', [
-                    'inputOptions' => [
-                        'class' => 'form-control'
-                    ]
-                ])->checkbox([], false)->label('Auto generate keywords')
-                ?>
-
                 <?= $form->field($static_page_translation, 'seoKeywords', [
                     'inputOptions' => [
                         'class' => 'form-control'
@@ -138,6 +107,6 @@ $this->title = 'Save static page translation';
     </div>
 </div>
 
-<input type="submit" class="btn btn-primary pull-right" value="<?= Yii::t('', 'Save'); ?>">
+<input type="submit" class="btn btn-primary pull-right" value="Save">
 
 <?php ActiveForm::end(); ?>

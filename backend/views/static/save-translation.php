@@ -7,8 +7,8 @@
  * @var StaticPageTranslation $page
  */
 
+use maks757\seo_static_page\common\entities\language\Language;
 use maks757\seo_static_page\common\entities\StaticPageTranslation;
-use bl\multilang\entities\Language;
 use dosamigos\tinymce\TinyMce;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
@@ -87,7 +87,7 @@ $this->title = 'Save static page translation';
                         'toolbar' => "undo redo | forecolor backcolor | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
                     ]])
                 ?>
-                <input type="submit" class="btn btn-primary pull-right" value="<?= Yii::t('', 'Save'); ?>">
+                <input type="submit" class="btn btn-primary pull-right" value="Save">
             </div>
         </div>
     </div>

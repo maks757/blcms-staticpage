@@ -2,8 +2,8 @@
 
 namespace maks757\seo_static_page\common\entities;
 
+use maks757\seo_static_page\common\entities\language\Language;
 use maks757\seo_static_page\common\entities\StaticPageTranslation;
-use bl\multilang\behaviors\TranslationBehavior;
 use Yii;
 use yii\db\ActiveRecord;
 
@@ -20,17 +20,6 @@ class StaticPage extends ActiveRecord
     /**
      * @inheritdoc
      */
-
-    public function behaviors()
-    {
-        return [
-            'translation' => [
-                'class' => TranslationBehavior::className(),
-                'translationClass' => StaticPageTranslation::className(),
-                'relationColumn' => 'page_key'
-            ]
-        ];
-    }
     
     public static function tableName()
     {
@@ -66,5 +55,14 @@ class StaticPage extends ActiveRecord
     public function getTranslations()
     {
         return $this->hasMany(StaticPageTranslation::className(), ['page_key' => 'key']);
+    }
+
+    public function getTranslation(){
+        return $this->hasOne(StaticPageTranslation::className(), ['page_key' => 'key'])
+            ->onCondition([
+                'language_id' => (empty(Language::getCurrent()) ?
+                    Language::getDefault()->getPrimaryKey() :
+                    Language::getCurrent()->getPrimaryKey())
+            ]);
     }
 }

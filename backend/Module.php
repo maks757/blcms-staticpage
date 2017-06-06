@@ -12,6 +12,8 @@ class Module extends \yii\base\Module
      */
     public $controllerNamespace = 'maks757\seo_static_page\backend\controllers';
 
+    public $defaultRoute  = 'static/index';
+
     /**
      * @inheritdoc
      */

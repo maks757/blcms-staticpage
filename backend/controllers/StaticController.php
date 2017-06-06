@@ -1,11 +1,10 @@
 <?php
 namespace maks757\seo_static_page\backend\controllers;
 
-use maks757\seo_static_page\common\entities\StaticPageTranslation;
+use maks757\seo_static_page\common\entities\language\Language;
 use maks757\seo_static_page\common\entities\StaticPage;
-use bl\multilang\entities\Language;
+use maks757\seo_static_page\common\entities\StaticPageTranslation;
 use Yii;
-use yii\filters\AccessControl;
 use yii\helpers\Url;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -15,35 +14,6 @@ use yii\web\Controller;
  */
 class StaticController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['index'],
-                        'roles' => ['viewStaticPages'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['save-page'],
-                        'roles' => ['editStaticPage'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['remove'],
-                        'roles' => ['deleteStaticPage'],
-                        'allow' => true,
-                    ],
-                ],
-            ]
-        ];
-    }
-
     /**
      * Renders the index view for the module
      * @return string
@@ -112,7 +82,8 @@ class StaticController extends Controller
                         else throw new BadRequestHttpException('Sorry, such static page already exist.');
                     }
                     $static_page_translation->language_id = $selected_language->id;
-                    $static_page_translation->save();
+                    if($static_page_translation->save())
+                        return $this->redirect(['/seo/static']);
                 }
             }
 

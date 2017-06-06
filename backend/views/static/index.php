@@ -5,7 +5,7 @@
  * @var $languages Language[]
 */
 
-use bl\multilang\entities\Language;
+use maks757\seo_static_page\common\entities\language\Language;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
@@ -23,12 +23,12 @@ $this->title = 'Static pages';
                     <?php if (!empty($pages)): ?>
                         <thead>
                         <tr>
-                            <th class="col-lg-5"><?= 'Page key' ?></th>
+                            <th class="col-lg-<?= count($languages) > 1 ? '5' : '10' ?>"><?= 'Page key' ?></th>
                             <?php if(count($languages) > 1): ?>
                                 <th class="col-lg-5"><?= 'Language' ?></th>
                             <?php endif; ?>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th class="col-lg-1">Edit</th>
+                            <th class="col-lg-1">Delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -56,14 +56,14 @@ $this->title = 'Static pages';
                                     <a href="<?= Url::to([
                                         'save-page',
                                         'page_key' => $page->key
-                                    ])?>" class="glyphicon glyphicon-edit text-warning btn btn-default btn-sm">
+                                    ])?>" class="fa fa-edit text-warning btn btn-default btn-sm">
                                     </a>
                                 </td>
                                 <td>
                                     <a href="<?= Url::to([
                                         'remove',
                                         'key' => $page->key
-                                    ])?>" class="glyphicon glyphicon-remove text-danger btn btn-default btn-sm">
+                                    ])?>" class="fa fa-remove text-danger btn btn-default btn-sm">
                                     </a>
                                 </td>
                             </tr>
