@@ -1,8 +1,8 @@
 <?php
-namespace bl\cms\seo;
+namespace maks757\seo_static_page;
 
-use bl\cms\seo\common\entities\StaticPage;
-use bl\cms\seo\common\entities\StaticPageTranslation;
+use maks757\seo_static_page\common\entities\StaticPage;
+use maks757\seo_static_page\common\entities\StaticPageTranslation;
 use yii\base\Behavior;
 use yii\web\Controller;
 

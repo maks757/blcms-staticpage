@@ -1,6 +1,6 @@
 <?php
 
-namespace bl\cms\seo\common\entities;
+namespace maks757\seo_static_page\common\entities;
 
 use bl\multilang\entities\Language;
 use bl\seo\behaviors\SeoDataBehavior;

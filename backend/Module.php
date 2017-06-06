@@ -1,6 +1,6 @@
 <?php
 
-namespace bl\cms\seo\backend;
+namespace maks757\seo_static_page\backend;
 
 /**
  * @author Albert Gainutdinov <xalbert.einsteinx@gmail.com>
@@ -10,7 +10,7 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'bl\cms\seo\backend\controllers';
+    public $controllerNamespace = 'maks757\seo_static_page\backend\controllers';
 
     /**
      * @inheritdoc

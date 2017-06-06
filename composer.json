@@ -1,5 +1,5 @@
 {
-  "name": "black-lamp/blcms-staticpage",
+  "name": "maks757/seo_static_page",
   "description": "Module for static pages",
   "keywords": ["yii2", "static", "page"],
   "type": "yii2-extension",
@@ -7,6 +7,10 @@
     {
       "name": "Albert Gainutdinov",
       "email": "xalbert.einsteinx@gmail.com"
+    },
+    {
+      "name": "Maxim Cherednyk",
+      "email": "maks757q@gmail.com"
     }
   ],
   "require": {
@@ -16,13 +20,11 @@
     "2amigos/yii2-tinymce-widget": "*",
 
     "yii2tech/ar-position": "*",
-
-    "black-lamp/yii2-multi-lang": "^1.0.0",
-    "black-lamp/yii2-seo": "0.1.*"
+    "maks757/yii2-seo": "*"
   },
   "autoload": {
     "psr-4": {
-      "bl\\cms\\seo\\": ""
+      "maks757\\seo_static_page\\": ""
     }
   }
 }

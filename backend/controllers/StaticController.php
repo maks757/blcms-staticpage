@@ -1,8 +1,8 @@
 <?php
-namespace bl\cms\seo\backend\controllers;
+namespace maks757\seo_static_page\backend\controllers;
 
-use bl\cms\seo\common\entities\StaticPageTranslation;
-use bl\cms\seo\common\entities\StaticPage;
+use maks757\seo_static_page\common\entities\StaticPageTranslation;
+use maks757\seo_static_page\common\entities\StaticPage;
 use bl\multilang\entities\Language;
 use Yii;
 use yii\filters\AccessControl;

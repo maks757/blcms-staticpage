@@ -8,7 +8,7 @@
  * @var ActiveForm $form
  */
 
-use bl\cms\seo\common\entities\StaticPageTranslation;
+use maks757\seo_static_page\common\entities\StaticPageTranslation;
 use bl\multilang\entities\Language;
 use dosamigos\tinymce\TinyMce;
 use yii\helpers\Url;

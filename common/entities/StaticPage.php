@@ -1,8 +1,8 @@
 <?php
 
-namespace bl\cms\seo\common\entities;
+namespace maks757\seo_static_page\common\entities;
 
-use bl\cms\seo\common\entities\StaticPageTranslation;
+use maks757\seo_static_page\common\entities\StaticPageTranslation;
 use bl\multilang\behaviors\TranslationBehavior;
 use Yii;
 use yii\db\ActiveRecord;
