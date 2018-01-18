@@ -75,13 +75,6 @@ $this->title = 'Save static page translation';
                 <?= 'Seo Data' ?>
             </div>
             <div class="panel-body">
-<!--                --><?//= $form->field($static_page_translation, 'seoUrl', [
-//                    'inputOptions' => [
-//                        'class' => 'form-control'
-//                    ]
-//                ])->label('Seo Url')
-//                ?>
-
                 <?= $form->field($static_page_translation, 'seoTitle', [
                     'inputOptions' => [
                         'class' => 'form-control'
