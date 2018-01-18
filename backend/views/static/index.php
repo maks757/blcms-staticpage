@@ -56,15 +56,13 @@ $this->title = 'Static pages';
                                     <a href="<?= Url::to([
                                         'save-page',
                                         'page_key' => $page->key
-                                    ])?>" class="fa fa-edit text-warning btn btn-default btn-sm">
-                                    </a>
+                                    ])?>" class="fa fa-edit text-warning btn btn-default btn-sm"><i class="glyphicon glyphicon-pencil"></i></a>
                                 </td>
                                 <td>
                                     <a href="<?= Url::to([
                                         'remove',
                                         'key' => $page->key
-                                    ])?>" class="fa fa-remove text-danger btn btn-default btn-sm">
-                                    </a>
+                                    ])?>" class="fa fa-remove text-danger btn btn-default btn-sm"><i class="glyphicon glyphicon-remove"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
